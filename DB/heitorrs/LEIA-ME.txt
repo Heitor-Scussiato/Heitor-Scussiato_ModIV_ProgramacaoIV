@@ -1,0 +1,2 @@
+conbanco.php = conexão com o banco
+bancoleitura.sql = versão mais atualizada do banco
