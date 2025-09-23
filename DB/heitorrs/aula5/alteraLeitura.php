@@ -14,18 +14,24 @@ try {
 
 // Set the variables for the person we want to add to the database
 
+$idleitura = $_POST['idleitura'];
 $idmac = $_POST['idmac'];
-$datatime = $_POST['datatime'];
+$datatime = $_POST['hora'];
 $umidade = $_POST['umidade'];
 $temperatura = $_POST['temperatura'];
 
 $my_Insert_Statement = $my_Db_Connection->prepare(
-"INSERT INTO leituraheitorrs (macheitorrs_idmacheitorrs, datatime , umidade, temperatura) 
-VALUES (:idmac, :datatime , :umidade, :temperatura) "
+"UPDATE leituraheitorrs 
+ SET macheitorrs_idmacheitorrs = :idmac,
+   datatime = :hora,
+   umidade = :umidade,
+   temperatura=:temperatura
+ WHERE idleituraheitorrs = :idleitura"
 );
 
+$my_Insert_Statement->bindParam(':idleitura', $idleitura);
 $my_Insert_Statement->bindParam(':idmac', $idmac);
-$my_Insert_Statement->bindParam(':datatime', $datatime);
+$my_Insert_Statement->bindParam(':hora', $datatime);
 $my_Insert_Statement->bindParam(':umidade', $umidade);
 $my_Insert_Statement->bindParam(':temperatura', $temperatura);
 

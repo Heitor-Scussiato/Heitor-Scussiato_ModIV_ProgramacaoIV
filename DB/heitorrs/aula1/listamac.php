@@ -1,79 +1,36 @@
-body {background-color: #101010; font-weight: bold; font-family: monospace;}
+<?php
+$username='miguelde_modulo4';
+$password='modulo4';
+$dbname='miguelde_modulo4';
+$host='localhost';
+try {
+ $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+ $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ $sql='SELECT * FROM macheitorrs';
+ $data = $conn->query($sql);
+ echo '<html>
+ <link rel="stylesheet" href="../style.css" type="text/css" />
 
+ <div class="container">
+<h1>Heitor Rauber Scussiato</h1>
+<h3>Placas & Mac</h3>
+</div>
+<div class="container2">
 
-table {
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  position: absolute;
-  top: 35%;
-  left: 15%;
-  width:70%;
-  max-width:70%;
-  border-collapse: collapse; /* Combina as bordas */
-  
-  margin-top: 1%; /* Espaçamento abaixo da tabela */
-  margin-bottom: 200%; /* Espaçamento abaixo da tabela */
-}
- th, td {
-  
-    padding: 6px; /* Espaçamento interno nas células */
-    border: 5px solid #a7a7a7; /* Borda para células */
-    text-align: center; /* Alinhamento do texto */
-  }
-  th {
-    background-color: #3f3f3f;
-    color: #ffffff; /* Cor de fundo para cabeçalho */
-    font-size: 150%;
-  }
-  tr:nth-child(even) {
-    background-color: #dfdfdf; /* Cores alternadas para linhas */
-  }
-  tr:nth-child(odd) {
-    background-color: #ffffff; /* Cores alternadas para linhas */
-  }
-  tr:hover {
-    background-color: #74ffff; /* Cor ao passar o mouse */
-    color: #000000;
-  }
-  
-  .container {
-    max-width: 70%;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-  }
-
-  .container2 {
-    max-width: 70%;
-    margin: 50px auto;
-    background-color: #fff;
-    padding: 30px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    border-radius: 8px;
-    height: 800px;
-  }
-
-  p {color: #ffffff; font-size: 110%;}
-
-    .box {
-    width: 200px;
-    height: 200px;
-    background-color: #4CAF50;
-    color: white;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px
-   rgba(0,0,0,0.2);
-    }
-
-    .box:nth-child(2) {
-    background-color: #2196F3;
-    }
-
-    .box:nth-child(3) {
-    background-color: #FF5722;
-    }
+ <table border=2>
+ <tr>
+     <th>Nome</th>
+     <th>ID</th>
+     <th>Valor</th>
+ </tr>
+ <tr>';
+ foreach($data as $row) {
+    echo '
+    <tr>
+    <td>'.$row[1].'</td>
+    <td>'.$row[0].'</td>
+    <td>'.$row[2].'</td>
+    </tr>';
+ }
+ echo '</table> </div></html>';
+} catch(PDOException $e) {echo 'ERROR: ' . $e->getMessage();}

@@ -26,9 +26,9 @@ try {
  <tr>
      <th>Nº</th>
      <th>ID</th>
-     <th>Placa</th>
      <th>Data</th>
-     <th>Valor</th>
+     <th>Umidade</th>
+     <th>Temperatura</th>
      </tr>
  <tr>';
  foreach($data as $row) {
@@ -37,8 +37,8 @@ try {
      <td>'.$row[0].'</td>
      <td>'.$row[1].'</td>
      <td>'.$row[2].'</td>
-     <td>'.$row[3].'</td>
-     <td>'.$row[4].'</td>
+     <td>'.$row[3].'%</td>
+     <td>'.$row[4].'ºC</td>
      </tr>';
     }
     echo '</table> </div></html>';

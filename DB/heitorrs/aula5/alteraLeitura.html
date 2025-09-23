@@ -5,20 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserir leitura Heitor :]</title>
+    <title>Alterar leitura Heitor :]</title>
     <style>
         form {left: 40%; top:35%; position: absolute; width: 20%;}
         input {width: 100%; text-align: center;} 
         dt {width: 100%;}
-        h1{position: fixed; top:-3%; left: 0%;  inline-size: 100%; text-align: center; box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);}
+        h1{position: fixed; top:-3%; left: 0%;  inline-size: 100%; text-align: center; box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5); background-color: aqua;}
 
     </style>
 </head>
 <body>
-    <h1>Inserir Leitura Heitor</h1>
-    <form method="post" action="insertleitura.php">
+    <h1>Alterar Leitura Heitor</h1>
+    <form method="post" action="alteraLeitura.php">
+            <input type="number" name="idleitura" placeholder="ID Leitura a ser trocado"><br>
             <input type="text" name="idmac" placeholder="endereço MAC"><br>
-            <input type="datetime-local" name="datatime" placeholder="AAAA-MM-DD hh-mm--ss"><br>
+            <input type="datetime-local" name="hora" placeholder="AAAA-MM-DD hh-mm--ss"><br>
             <input type="number" name="umidade" placeholder="Umidade %"><br>
             <input type="number" name="temperatura" placeholder="Temperatura .cº"><br>
             <input type="submit" name="enviar" value="enviar">

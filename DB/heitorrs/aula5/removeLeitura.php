@@ -12,15 +12,13 @@ try {
   echo 'Connection error: ' . $error->getMessage();
 }
 
-$idmac = $_POST['idmac'];
-$nome = $_POST['nome'];
+$idleitura = $_POST['idleitura'];
 
-$my_Insert_Statement = $my_Db_Connection->prepare("INSERT INTO macheitorrs (idmacheitorrs, nome) VALUES (:idmac, :nome)");
-$my_Insert_Statement->bindParam(':idmac', $idmac);
-$my_Insert_Statement->bindParam(':nome', $nome);
+$my_Insert_Statement = $my_Db_Connection->prepare("DELETE FROM leituraheitorrs WHERE idleituraheitorrs == :idleitura");
+$my_Insert_Statement->bindParam(':idleitura', $idleitura);
 
 if ($my_Insert_Statement->execute()) {
-  echo "Placa inserida com sucesso!!";
+  echo " Leitura Removida com sucesso!!";
 } else {
   echo "Deu RUIM!";
 }
