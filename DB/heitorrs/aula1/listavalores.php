@@ -10,7 +10,6 @@
 <h1>Heitor Rauber Scussiato</h1>
 <h3>Leituras Mac</h3>
 </div>
-<div class='container2'>
 
 <?php
 $username='miguelde_modulo4';
@@ -22,7 +21,7 @@ try {
  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
  $sql='SELECT * FROM leituraheitorrs';
  $data = $conn->query($sql);
- echo ' <table>
+ echo ' <table class="container2">
  <tr>
      <th>Nº</th>
      <th>ID</th>
@@ -41,7 +40,7 @@ try {
      <td>'.$row[4].'ºC</td>
      </tr>';
     }
-    echo '</table> </div></html>';
+    echo '<tr></tr><tr></tr></table> </html>';
     
 } catch(PDOException $e) {
  echo 'ERROR: ' . $e->getMessage();

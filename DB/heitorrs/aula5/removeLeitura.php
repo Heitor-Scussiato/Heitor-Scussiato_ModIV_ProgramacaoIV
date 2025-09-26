@@ -14,7 +14,7 @@ try {
 
 $idleitura = $_POST['idleitura'];
 
-$my_Insert_Statement = $my_Db_Connection->prepare("DELETE FROM leituraheitorrs WHERE idleituraheitorrs == :idleitura");
+$my_Insert_Statement = $my_Db_Connection->prepare("DELETE FROM leituraheitorrs WHERE idleituraheitorrs = :idleitura");
 $my_Insert_Statement->bindParam(':idleitura', $idleitura);
 
 if ($my_Insert_Statement->execute()) {
