@@ -12,14 +12,24 @@ try {
   echo 'Connection error: ' . $error->getMessage();
 }
 
-$idleitura = $_POST['idleitura'];
+$idleituraIni = $_POST['idleituraIni'];
+$idleituraFim = $_POST['idleituraFim'];
 
-$my_Insert_Statement = $my_Db_Connection->prepare("DELETE FROM leituraheitorrs WHERE idleituraheitorrs = :idleitura");
-$my_Insert_Statement->bindParam(':idleitura', $idleitura);
+if ($idleituraIni <= $idleituraFim) {
+  $quantRemover = $idleituraFim - $idleituraIni;
 
-if ($my_Insert_Statement->execute()) {
-  echo " Leitura Removida com sucesso!!";
-} else {
-  echo "Deu RUIM!";
+  for ($i=$idleituraIni; $i<=$idleituraFim;$i++) {
+
+    $my_Insert_Statement = $my_Db_Connection->prepare("DELETE FROM leituraheitorrs WHERE idleituraheitorrs = :idleitura");
+    $my_Insert_Statement->bindParam(':idleitura', $i);
+    
+    if ($my_Insert_Statement->execute()) {
+      echo "<p>" . $i . ": Leitura Removida com sucesso!!</p>";
+    } else {
+      echo "Deu RUIM!";
+    }
+  }
 }
+
+
 ?>

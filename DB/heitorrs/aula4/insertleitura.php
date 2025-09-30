@@ -14,8 +14,18 @@ try {
 
 // Set the variables for the person we want to add to the database
 
+if (($_POST['from']!='ESP8266')){
+    $datatime = $_POST['datatime'];
+
+}else{
+    $h = "3"; //HORAS DO FUSO ((BRASÃLIA = -3) COLOCA-SE SEM O SINAL -).
+    $hm = $h * 60;
+    $ms = $hm * 60;    //COLOCA-SE O SINAL DO FUSO ((BRASÃLIA = -3) SINAL -) ANTES DO ($ms). DATA
+    $datatime = gmdate("Y/m/d H:i:s", time()-($ms));     
+}
+
 $idmac = $_POST['idmac'];
-$datatime = $_POST['datatime'];
+
 $umidade = $_POST['umidade'];
 $temperatura = $_POST['temperatura'];
 

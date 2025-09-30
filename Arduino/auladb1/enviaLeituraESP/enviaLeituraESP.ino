@@ -2,14 +2,18 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
+#include <DHT.h>
 
-const char *ssid = "Familia Feliz";
-const char *password = "mana@mano";
+const char *ssid = "TP-Link_688A";
+const char *password = "debarbamiguel";
 const int http_port = 8080;
 
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+
+#define DHTTYPE DHT11
+DHT dht(D4, DHTTYPE, 50);
 
 #define SCREEN_WIDTH 128  // OLED display width, in pixels
 #define SCREEN_HEIGHT 64  // OLED display height, in pixels
@@ -24,8 +28,8 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 float umidade = 0;
 float temperatura = 0;
-int mode = 0;
 int push = 0;
+int a= 0;
 
 WiFiClient client;
 
@@ -113,37 +117,28 @@ void setVal() {
 
 void loop() {
 
-  if (digitalRead(D0) == HIGH && push == 0) {
-    push = 1;
-    mode += 1;
-    Serial.println("\nModo alterado - " + String(mode));
-    if (mode => 2) {mode = 0;}
-    digitalWrite(D5, HIGH);   // essa desgraça tá ferrando com tudo
-    delay(100);               // simplesmente, a tela congela nessa parte
-    display.display();        // vou ter que refazer a lógica do botão
+  /*if (digitalRead(D0) == HIGH && push == 0) {
+   
   } 
-  if (digitalRead(D0) == LOW) {push = 0;}
+  if (digitalRead(D0) == LOW) {push = 0;}*/
   
   display.clearDisplay();
   display.setTextSize(2);
   display.setTextColor(WHITE);
   display.setCursor(0, 0);
   display.println("HEITOR RS.");
-  display.setTextSize(1);
-  if (mode == 1) {
-    umidade = map(analogRead(A0), 0, 1024, 0, 100);
-    Serial.println("A0: " + String(umidade));
-  } else if (mode == 2) {
-    temperatura = map(analogRead(A0), 0, 1024, -30, 50);
-  }
   
+  umidade     = dht.readHumidity();
+  temperatura = dht.readTemperature();
+  
+  display.setTextSize(1);
   display.println("\nUm: " + String(umidade) + "%");
   display.println("Temp: " + String(temperatura) + "C");
-  display.display(); 
+ 
 
-  digitalWrite(D1, LOW);
+  //digitalWrite(D1, LOW);
 
-  if (digitalRead(D8) == HIGH) {
+ /*if (digitalRead(D8) == HIGH) {
     delay(100);
     display.setCursor(0, 50);
     display.println("Enviando...");   
@@ -160,5 +155,13 @@ void loop() {
     display.clearDisplay();
     digitalWrite(D1, HIGH);
     delay(100);
+  }*/
+  a+=1;
+  delay(1);
+  if (a>50) {a=0;}
+  if (a<25) {
+  display.setCursor(0, 50);
+  display.println("#");
   }
+  display.display(); 
 }
