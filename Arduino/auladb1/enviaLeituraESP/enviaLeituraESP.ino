@@ -107,13 +107,6 @@ void enviaServer(String postData) {
   http.end();
 }
 
-void setVal() {
-  delay(100);
-      umidade = random(50, 100);
-      temperatura = random(-10, 43);
-      digitalWrite(D5, HIGH);
-  delay(500);
-}
 
 void loop() {
 
@@ -134,34 +127,34 @@ void loop() {
   display.setTextSize(1);
   display.println("\nUm: " + String(umidade) + "%");
   display.println("Temp: " + String(temperatura) + "C");
- 
-
-  //digitalWrite(D1, LOW);
-
- /*if (digitalRead(D8) == HIGH) {
-    delay(100);
-    display.setCursor(0, 50);
-    display.println("Enviando...");   
-    display.display();
-    digitalWrite(D5, HIGH);
-    String Mac = WiFi.macAddress();
-    String datatime = "2025-09-28 18:00";
-    String postData = "idmac=" + String(Mac) + "&umidade=" + String(umidade) + "&temperatura=" + String(temperatura) + "&datatime=" + datatime;
-    enviaServer(postData);
-    delay(1000);
-    digitalWrite(D1, LOW);
-    setVal();
-    delay(500);
-    display.clearDisplay();
-    digitalWrite(D1, HIGH);
-    delay(100);
-  }*/
+  
   a+=1;
   delay(1);
   if (a>50) {a=0;}
   if (a<25) {
-  display.setCursor(0, 50);
-  display.println("#");
+    display.setCursor(0, 50);
+    display.println("#");
   }
   display.display(); 
+
+  
+  digitalWrite(D1, LOW);
+
+ if (digitalRead(D8) == HIGH) {
+    delay(100);
+    display.setCursor(0, 50);
+    display.println("Enviando...");   
+    display.display();
+    digitalWrite(D1, HIGH);
+    String Mac = WiFi.macAddress();
+    String postData = "idmac=" + String(Mac) + "&umidade=" + String(umidade) + "&temperatura=" + String(temperatura) + "&from=ESP8266";
+    enviaServer(postData);
+    delay(1000);
+    digitalWrite(D1, LOW);
+    delay(400);
+    digitalWrite(D1, HIGH);
+    display.clearDisplay();
+    delay(100);
+  } 
+  display.display();
 }
