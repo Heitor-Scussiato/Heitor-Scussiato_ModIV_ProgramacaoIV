@@ -12,6 +12,7 @@ try {
  <link rel="stylesheet" href="../style.css" type="text/css" />
 
  <div class="container">
+ <a href="../index.php">Retornar</a>
 <h1>Heitor Rauber Scussiato</h1>
 <h3>Placas & Mac</h3>
 </div>

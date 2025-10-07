@@ -1,0 +1,67 @@
+
+.navbar {
+    background-color: #4CAF50; /* Medium Blue for Navbar */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.navbar-brand {
+    color: #000000; /* White for brand text */
+}
+
+.main-content {
+    flex-grow: 1; /* Permite que o conteÃºdo principal ocupe o espaÃ§o restante */
+    display: flex;
+    align-items: center; /* Centraliza verticalmente o card */
+    justify-content: center; /* Centraliza horizontalmente o card */
+    padding: 20px; /* Adiciona um padding para telas menores */
+}
+
+.card {
+    background-color: #FFDEAD; /* Card background blue */
+    border: none;
+    color: #000000;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    max-width: 500px; /* Limita a largura mÃ¡xima do card */
+    width: 100%; /* Garante que o card ocupe a largura disponÃ­vel */
+}
+
+.card-header {
+    background-color: #1F3B5D; /* Card header dark blue */
+    border-bottom: none;
+    color: #000000;
+    padding: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.list-group-item {
+    background-color: #F5DEB3; /* List item background blue */
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #000000;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: #006400; 
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+.list-group-item a {
+    color: inherit; /* Herda a cor do texto do pai */
+    text-decoration: none; /* Remove sublinhado dos links */
+    display: block; /* Faz o link ocupar todo o espaÃ§o do item */
+    padding: 0.75rem 1.25rem; /* Padding para o link dentro do item */
+}
+
+.list-group-item i {
+    margin-right: 10px;
+}

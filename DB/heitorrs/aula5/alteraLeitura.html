@@ -11,17 +11,19 @@
         input {width: 100%; text-align: center;} 
         dt {width: 100%;}
         h1{position: fixed; top:-3%; left: 0%;  inline-size: 100%; text-align: center; box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5); background-color: aqua;}
-
+        a {position: fixed; z-index: 10; left: 5%; top: 2%;}
     </style>
 </head>
 <body>
     <h1>Alterar Leitura Heitor</h1>
+    <a href="../index.php">Retornar</a>
     <form method="post" action="alteraLeitura.php">
             <input type="number" name="idleitura" placeholder="ID Leitura a ser trocado"><br>
             <input type="text" name="idmac" placeholder="endereço MAC"><br>
             <input type="datetime-local" name="hora" placeholder="AAAA-MM-DD hh-mm--ss"><br>
             <input type="number" name="umidade" placeholder="Umidade %"><br>
             <input type="number" name="temperatura" placeholder="Temperatura .cº"><br>
+            <input type="hidden" name="from" value="html">
             <input type="submit" name="enviar" value="enviar">
     </form>
     

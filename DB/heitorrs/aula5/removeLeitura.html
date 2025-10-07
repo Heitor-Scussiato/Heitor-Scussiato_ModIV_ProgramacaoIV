@@ -1,8 +1,12 @@
 <html>
-<h3>Remover Leitura</h3>
-<form method="post" action="removeLeitura.php">
-    <label>Inicio: <input type="number" name="idleituraIni" placeholder="digite o Nº da leitura inicio"></label><br>
-    <label>Fim: <input type="number" name="idleituraFim" placeholder="digite o Nº da leitura fim"></label><br>
+<link rel="stylesheet" href="../style.css" type="text/css" />
+    <div class="container">
+        <a href="../index.php">Retornar</a>
+        <h3>Remover Leituras</h3>
+    </div>
+<form class="container" method="post" action="removeLeitura.php">
+    <label>Inicio: <input type="number" name="idleituraIni" placeholder="digite o N# da leitura inicio"></label><br>
+    <label>Fim: <input type="number" name="idleituraFim" placeholder="digite o N# da leitura fim"></label><br>
     <input type="submit" name="enviar" value="Enviar">
 </form>
 
